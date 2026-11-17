@@ -21,8 +21,11 @@ def variacao_total(contagens_a, contagens_b):
     if total_a <= 0 or total_b <= 0:
         raise ValueError("contagens nao podem somar zero")
     chaves = set(contagens_a) | set(contagens_b)
-    return 0.5 * sum(abs(contagens_a.get(k, 0) / total_a - contagens_b.get(k, 0) / total_b)
-                     for k in chaves)
+    bruto = 0.5 * sum(abs(contagens_a.get(k, 0) / total_a - contagens_b.get(k, 0) / total_b)
+                      for k in chaves)
+    # achado do fuzz: a soma em ponto flutuante pode passar de 1,0 por um ULP
+    # (1,0000000000000002), e distancia de variacao total nao existe acima de 1.
+    return min(1.0, max(0.0, bruto))
 
 
 def alinhar(contagens_a, contagens_b, tolerancia=0.10, rotulo_a="A", rotulo_b="B",

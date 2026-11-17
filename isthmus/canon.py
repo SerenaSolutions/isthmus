@@ -23,7 +23,8 @@ PROFILES = {"canon-v1": canon_v1, "canon-u0008": canon_u0008}
 
 
 def canonize(payload, profile="canon-v1"):
-    if profile not in PROFILES:
+    # achado do fuzz: profile nao textual (dict, lista) estourava TypeError cru
+    if not isinstance(profile, str) or profile not in PROFILES:
         raise Refusal("ISTH-PROFILE", str(profile))
     raw = PROFILES[profile](payload)
     return {"bytes": raw, "sha3": hashlib.sha3_256(raw).hexdigest(), "profile": profile}

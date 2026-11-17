@@ -40,6 +40,19 @@ class TestAlignmentTwo(unittest.TestCase):
         r05 = alinhar(cudaq, ibm, tolerancia=0.05)
         self.assertEqual(r05["verdict"], "REFUSED")      # com 0,05 o mesmo par ja recusa
 
+    def test_distancia_nunca_passa_de_um(self):
+        """Achado do fuzz: soma em ponto flutuante estourava para 1,0000000000000002."""
+        import random
+        r = random.Random(20261117)
+        for _ in range(2000):
+            a = {str(k): r.randint(0, 400) for k in range(6) if r.random() < 0.7}
+            b = {str(k): r.randint(0, 400) for k in range(6) if r.random() < 0.7}
+            if not a or not b or sum(a.values()) == 0 or sum(b.values()) == 0:
+                continue
+            d = variacao_total(a, b)
+            self.assertGreaterEqual(d, 0.0)
+            self.assertLessEqual(d, 1.0)
+
     def test_recibos_sem_selo_recusam(self):
         with self.assertRaises(Refusal):
             alinhar_recibos({"payload": {"counts": {"00": 1}}}, {"seal": "x", "counts": {"00": 1}})
