@@ -75,28 +75,56 @@ A cadeia tem verificação própria: um elo re-selado passa sozinho e só
 `verify_chain` o denuncia, que é a diferença entre dano contíguo (*snowball*) e
 dano distribuído (*shower*).
 
-## Vocabulário de verificação, com origem declarada
+## Vocabulário de verificação, adaptado à linguagem
 
-Os nomes das etapas vêm da engenharia de alinhamento do telescópio espacial James
+Os nomes das fases vêm da engenharia de alinhamento do telescópio espacial James
 Webb, onde alinhar o espelho é medir, corrigir e medir de novo em duas escalas.
-Seis conceitos, sete nomes, cada um preso a uma peça do código:
+No Isthmus eles não são metáfora de documento: são o pipeline declarado em
+`isthmus/nomenclature.py`, e cada nome aponta para a função que o executa.
 
-| termo no JWST | peça no Isthmus | onde |
+| fase | o que faz no Isthmus | alvo no código |
 |---|---|---|
-| Backplane | contrato de serialização canônica: impede a forma de deformar | `canon.py` |
-| Coarse phasing | fase grossa: esquema, versão de gramática, campos | `receipt.verify` |
-| Fine phasing | fase fina: selo SHA3-256 sobre os bytes canônicos | `receipt.verify` |
-| Dispersed fringe sensing | Fringe: mede a divergência entre duas canonizações | `fringe.py` |
-| CRDS | perfil de canonização versionado, declarado no recibo | `canon.PROFILES` |
-| Trim tab | constante declarada do emissor, absorve não-determinação | `payload.trim` |
-| Snowball e shower | dano contíguo versus dano distribuído na cadeia | `verify` e `verify_chain` |
+| Deployment | declara band, oracle, shots e deny antes de executar | `budget.Budget` |
+| Wavefront Sensing | aquisição não destrutiva em rampa | `ramp.fit` |
+| Segment Alignment | admissão de campos e forma canônica | `shutter.shutter` |
+| Image Stacking | acúmulo de contagens até os tiros declarados | `sampler.sample` |
+| Coarse Phasing | esquema, versão de gramática e campos | `receipt.coarse_phasing` |
+| Fine Phasing | selo SHA3-256 sobre os bytes canônicos | `receipt.fine_phasing` |
+| Wavefront Control | correção de fase entre duas medições | `refase.refase` |
 
-Duas ressalvas de honestidade, e valem mais que o nome bonito: no JWST o
-*backplane não é berílio*, é compósito de grafite, e quem é berílio são os 18
-segmentos do espelho; e *coarse/fine phasing* medem fase óptica, não bytes. A
-analogia é de método, não de física.
+Quatro contratos e dois artefatos completam o vocabulário:
 
-Detalhamento, com teste de aceite para cada termo: `docs/ISTHMUS_1.2_vocabulario_verificacao_2026-11-17.md`.
+| nome | papel | onde |
+|---|---|---|
+| Backplane | contrato de serialização canônica | `canon.canonize` |
+| CRDS | registro versionado de regras, o campo `profile` do recibo | `canon.PROFILES` |
+| Trim tab | constante declarada do emissor | `receipt.build` |
+| Dispersed fringe sensing | medida da divergência entre duas canonizações | `fringe.fringe` |
+| Snowball | dano contíguo, pego pela fase fina | `ISTH-FINE-SEAL` |
+| Shower | dano distribuído, pego pela cadeia | `ISTH-CHAIN-SHOWER` |
+
+O vocabulário é executável, não decorativo:
+
+```python
+>>> import isthmus
+>>> isthmus.nomenclature.validate()
+{'ok': True, 'fases': 7, 'contratos': 4, 'artefatos': 2, 'faltando': []}
+>>> isthmus.coarse_phasing(recibo)      # só a fase grossa
+>>> isthmus.fine_phasing(recibo)        # só a fase fina
+>>> isthmus.nomenclature.artifact_of("ISTH-CHAIN-SHOWER")
+'Shower'
+```
+
+`validate()` importa cada alvo: nome sem função por trás reprova. E um teste de
+drift confere que toda fase do vocabulário aparece neste README, para documento e
+código não se separarem.
+
+Duas ressalvas de fonte, que valem mais que o nome bonito: no JWST o *backplane
+não é berílio*, é compósito de grafite, e quem é berílio são os 18 segmentos do
+espelho; e *coarse/fine phasing* medem fase óptica, não bytes. A analogia é de
+método, não de física.
+
+Detalhamento com teste de aceite por termo: `docs/ISTHMUS_1.2_vocabulario_verificacao_2026-11-17.md`.
 
 ## Testado com simulador, não com hardware
 

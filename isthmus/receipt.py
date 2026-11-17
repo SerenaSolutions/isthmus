@@ -26,6 +26,29 @@ def build(prev_seal=None, **fields):
     return {"payload": payload, "seal": _seal(payload)}
 
 
+def coarse_phasing(rec):
+    """Fase grossa, sozinha: esquema, gramatica e campos obrigatorios."""
+    payload = rec.get("payload") if isinstance(rec, dict) else None
+    if not isinstance(payload, dict):
+        raise Refusal("ISTH-COARSE-SCHEMA", "sem payload")
+    if payload.get("schema") != SCHEMA:
+        raise Refusal("ISTH-COARSE-SCHEMA", str(payload.get("schema")))
+    if payload.get("gramatica") != GRAMATICA:
+        raise Refusal("ISTH-COARSE-GRAMATICA", str(payload.get("gramatica")))
+    for k in REQUIRED:
+        if k not in payload:
+            raise Refusal("ISTH-COARSE-CAMPO", k)
+    return {"stage": "coarse_phasing", "state": "ok", "fields": len(REQUIRED)}
+
+
+def fine_phasing(rec):
+    """Fase fina, sozinha: selo SHA3-256 sobre os bytes canonicos."""
+    payload = rec["payload"]
+    if _seal(payload) != rec.get("seal"):
+        raise Refusal("ISTH-FINE-SEAL", "selo nao confere")
+    return {"stage": "fine_phasing", "state": "ok", "profile": payload.get("profile")}
+
+
 def verify(rec):
     """Grossa primeiro, fina depois. Grossa barata e falha cedo."""
     payload = rec.get("payload") if isinstance(rec, dict) else None

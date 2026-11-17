@@ -21,9 +21,10 @@ from .mitigation import audit as mitigation_audit
 from .transpile import audit as transpile_audit
 from .quantum import Flow
 from .characterize import characterize, check_band
-from .receipt import build, verify, verify_chain, REQUIRED
+from .receipt import build, verify, verify_chain, REQUIRED, coarse_phasing, fine_phasing
+from . import nomenclature
 
 __all__ = ["Refusal", "CODES", "canonize", "PROFILES", "fringe", "shutter", "ramp_fit",
            "refase", "Budget", "sample", "estimate_two_rounds", "mitigation_audit",
            "transpile_audit", "Flow", "characterize", "check_band", "build", "verify",
-           "verify_chain", "REQUIRED", "__version__", "ABBREV", "abbrev_name"]
+           "verify_chain", "REQUIRED", "coarse_phasing", "fine_phasing", "nomenclature", "__version__", "ABBREV", "abbrev_name"]
