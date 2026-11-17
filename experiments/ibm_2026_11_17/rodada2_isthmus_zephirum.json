@@ -1,0 +1,92 @@
+{
+  "job": "dbu4fts9po4c73cei1b0",
+  "backend": "ibm_kingston",
+  "circuitos": {
+    "bell": {
+      "shots": 1024,
+      "concordam": 981,
+      "taxa": 0.958,
+      "hipoteses": {
+        "p0": 0.85,
+        "p1": 0.95,
+        "limiar_zephirum": 0.9
+      },
+      "isthmus": {
+        "veredito": "REFUSED",
+        "regra": "hoeffding",
+        "llr": 61.87202,
+        "recibo_ok": {
+          "state": "ok",
+          "stage": "fine",
+          "profile": "canon-v1"
+        },
+        "selo": "eba8857d4a9ccc1b"
+      },
+      "zephirum": {
+        "veredito": "1",
+        "limiar": 0.9,
+        "epsilon": 0.042441,
+        "recibo_ok": true,
+        "selo": "d548405fc3bfc9e5"
+      },
+      "distribuicao": {
+        "00": 498,
+        "11": 483,
+        "01": 23,
+        "10": 20
+      }
+    },
+    "ghz6": {
+      "shots": 1024,
+      "concordam": 955,
+      "taxa": 0.9326,
+      "hipoteses": {
+        "p0": 0.7,
+        "p1": 0.9,
+        "limiar_zephirum": 0.85
+      },
+      "isthmus": {
+        "veredito": "REFUSED",
+        "regra": "hoeffding",
+        "llr": 164.201031,
+        "recibo_ok": {
+          "state": "ok",
+          "stage": "fine",
+          "profile": "canon-v1"
+        },
+        "selo": "daa97b4893301890"
+      },
+      "zephirum": {
+        "veredito": "1",
+        "limiar": 0.85,
+        "epsilon": 0.042441,
+        "recibo_ok": true,
+        "selo": "d03b547107f1d353"
+      },
+      "distribuicao": {
+        "000000": 516,
+        "111111": 439,
+        "111110": 13,
+        "111101": 13,
+        "100000": 5,
+        "101111": 5
+      }
+    }
+  },
+  "alignment_two": {
+    "verdict": 1,
+    "metrica": "tv",
+    "distancia": 0.041992,
+    "tolerancia": 0.1,
+    "folga": 0.058008,
+    "lado_a": {
+      "rotulo": "cudaq-ideal",
+      "tiros": 2048
+    },
+    "lado_b": {
+      "rotulo": "ibm_kingston",
+      "tiros": 1024
+    },
+    "motivo": null
+  }
+}
