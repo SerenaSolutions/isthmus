@@ -1,0 +1,39 @@
+{
+  "data": "2026-11-17",
+  "job": "dbu3i2c9po4c73cegl3g",
+  "backend": "ibm_marrakesh",
+  "shots": 2048,
+  "concordam": 1845,
+  "discordam": 203,
+  "taxa": 0.900879,
+  "hipoteses": {
+    "p0": 0.85,
+    "p1": 0.95
+  },
+  "regras": {
+    "sprt": {
+      "verdict": 0,
+      "taxa": 0.900879,
+      "llr": -17.806998,
+      "shots_declarados": 2048,
+      "parada_min": 3,
+      "parada_max": 27,
+      "parada_se_sucessos_primeiro": 27,
+      "parada_se_falhas_primeiro": 3,
+      "economia_contra_4096": 0.5,
+      "regra": "sprt"
+    },
+    "hoeffding": {
+      "verdict": 0,
+      "taxa": 0.900879,
+      "llr": -17.806998,
+      "shots_declarados": 2048,
+      "parada_min": 3,
+      "parada_max": 27,
+      "parada_se_sucessos_primeiro": 27,
+      "parada_se_falhas_primeiro": 3,
+      "economia_contra_4096": 0.5,
+      "regra": "hoeffding"
+    }
+  }
+}
