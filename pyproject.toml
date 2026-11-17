@@ -20,8 +20,9 @@ dependencies = []
 
 [project.scripts]
 isthmus = "isthmus.cli:main"
+isth = "isthmus.cli:main"
 ist = "isthmus.cli:main"
-sth = "isthmus.cli:main"
+sth = "isthmus.sth_cli:main"
 
 [tool.setuptools]
 packages = ["isthmus"]

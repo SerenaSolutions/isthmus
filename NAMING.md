@@ -2,37 +2,50 @@
 
 | forma | papel | uso |
 |---|---|---|
-| **Isthmus** | nome de exibição | texto, capa, título de seção |
-| `isthmus` | nome canônico | pacote, import, URL do repositório |
-| **IST** | abreviação oficial | sufixo de versão, etiqueta, tabela |
-| **STH** | abreviação oficial | idem, forma curta de quatro letras |
+| **Isthmus** | nome de exibição | texto, capa, titulo de secao |
+| `isthmus` | nome canonico | pacote, import, URL do repositorio |
+| **ISTH** | abreviacao oficial de Isthmus | etiqueta, tabela, versao |
+| **STH** | sublinguagem **derivada** | quem so sela, verifica e encadeia |
 
-As duas abreviações são equivalentes e ambas aceitas. `IST` é a que aparece em
-documento; `STH` é a que aparece onde o espaço é curto, cabeçalho de tabela e
-nome de arquivo.
+## ISTH
 
-## Implementadas, não só declaradas
-
-Os três nomes de comando existem e fazem a mesma coisa:
+Abreviacao oficial. Tres comandos equivalentes, todos decidem:
 
 ```
 isthmus decide --p0 0.9 --shots 512
-ist      decide --p0 0.9 --shots 512
-sth      decide --p0 0.9 --shots 512
+isth    decide --p0 0.9 --shots 512
+ist     decide --p0 0.9 --shots 512
 ```
-
-E as abreviações são exportadas pelo pacote:
 
 ```python
 >>> import isthmus
 >>> isthmus.ABBREV
-('IST', 'STH')
->>> isthmus.abbrev_name()
-'IST|STH'
+('ISTH',)
 ```
 
-## Prefixo dos códigos
+## STH, a derivada
 
-Códigos de recusa usam `ISTH-`, que é a raiz comum às duas abreviações: `IST` mais
-o `H` que sobrevive em `STH`. Trocar o prefixo quebraria recibos já emitidos, então
-ele não muda.
+STH nao e apelido de Isthmus. E uma sublinguagem menor, derivada de ISTH, restrita
+a transportar e conferir: sela payload ja decidido, verifica recibo, verifica
+cadeia. Nao decide.
+
+```
+sth seal   payload.json    # exige campo verdict
+sth verify recibo.json
+sth chain  r1.json r2.json r3.json
+sth decide                 # recusa com ISTH-STH-NOT-ALLOWED
+```
+
+A derivacao e por subtracao: STH nao tem Ramp, Shutter, Estimator, banda nem
+oraculo. Quem precisa de qualquer um deles usa ISTH.
+
+```python
+>>> from isthmus import sth
+>>> sth.NAME, sth.DERIVED_FROM
+('STH', 'ISTH')
+```
+
+## Prefixo dos codigos
+
+`ISTH-`, a raiz de `ISTH` e de `STH`. Trocar o prefixo quebraria recibo ja
+emitido, entao ele nao muda.

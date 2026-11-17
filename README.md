@@ -1,7 +1,7 @@
 # ISTHMUS
 
 Sub-linguagem híbrida de interoperabilidade, controle e verificação do ecossistema
-ZEPHIRUM/ZYQL. Abreviações oficiais: **IST** e **STH**.
+ZEPHIRUM/ZYQL. Abreviação oficial: **ISTH**. Derivada: **STH**.
 
 Quatorze algoritmos em três camadas, um recibo com duas etapas de verificação,
 zero dependência externa.
@@ -20,7 +20,7 @@ isthmus decide --p0 0.9 --shots 512 > r.json
 isthmus verify r.json                          # {"state":"ok","stage":"fine"}
 ```
 
-Os três comandos `isthmus`, `ist` e `sth` são equivalentes.
+`isthmus`, `isth` e `ist` são equivalentes e decidem. `sth` é a derivada que só sela, verifica e encadeia.
 
 Alterar `verdict` no `r.json` e repetir a verificação devolve
 `{"state":"refused","code":"ISTH-FINE-SEAL"}` com saída de código 1.

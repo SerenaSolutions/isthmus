@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """isthmus: sublinguagem hibrida de interoperabilidade, controle e verificacao."""
 __version__ = "0.1.0"
-ABBREV = ("IST", "STH")
+ABBREV = ("ISTH",)
 
 
 def abbrev_name():
-    """Abreviacoes oficiais, unidas: IST|STH."""
-    return "|".join(ABBREV)
+    """Abreviacao oficial de Isthmus."""
+    return ABBREV[0]
 
 from .errors import Refusal, CODES
 from .canon import canonize, PROFILES
