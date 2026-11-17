@@ -9,6 +9,8 @@ Deixa de ser especificação. `isthmus` v0.1.0 existe, roda, e tem teste para ca
 
 17/11/2026 · Serena Solutions
 
+> *Nota de leitura*: as 32 medições deste documento são da v0.1.0, medidas naquele momento e mantidas como estão. A versão atual tem 42 testes, porque a STH entrou depois. Contagem atual: `CHANGELOG.md`.
+
 ---
 
 ## 1. O que passou a existir
