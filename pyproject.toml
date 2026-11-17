@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "isthmus"
+version = "0.1.0"
+description = "Sub-linguagem híbrida de interoperabilidade, controle e verificação do ecossistema ZEPHIRUM"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Serena Solutions" }]
+keywords = ["quantum", "verification", "receipts", "trivalent", "isthmus", "ist", "sth"]
+classifiers = [
+  "License :: OSI Approved :: Apache Software License",
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
+]
+dependencies = []
+
+[project.scripts]
+isthmus = "isthmus.cli:main"
+ist = "isthmus.cli:main"
+sth = "isthmus.cli:main"
+
+[tool.setuptools]
+packages = ["isthmus"]

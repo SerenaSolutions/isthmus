@@ -1,0 +1,37 @@
+test_recusa_ao_estourar (test_aceite.BudgetTest.test_recusa_ao_estourar) ... ok
+test_deterministico_e_com_perfil (test_aceite.CanonizeTest.test_deterministico_e_com_perfil) ... ok
+test_dois_perfis_mesmo_payload (test_aceite.CanonizeTest.test_dois_perfis_mesmo_payload) ... ok
+test_perfil_desconhecido_recusa (test_aceite.CanonizeTest.test_perfil_desconhecido_recusa) ... ok
+test_banda_coerente (test_aceite.CharacterizeTest.test_banda_coerente) ... ok
+test_banda_otimista_recusa (test_aceite.CharacterizeTest.test_banda_otimista_recusa) ... ok
+test_deriva_recusa (test_aceite.EstimatorTest.test_deriva_recusa) ... ok
+test_duas_rodadas_dentro_da_banda (test_aceite.EstimatorTest.test_duas_rodadas_dentro_da_banda) ... ok
+test_flow_valido (test_aceite.FlowTest.test_flow_valido) ... ok
+test_reset_sem_prepare (test_aceite.FlowTest.test_reset_sem_prepare) ... ok
+test_escape_de_controle (test_aceite.FringeTest.test_escape_de_controle) ... ok
+test_sem_deriva (test_aceite.FringeTest.test_sem_deriva) ... ok
+test_declarado_passa (test_aceite.MitigationTest.test_declarado_passa) ... ok
+test_metodo_sem_fatores (test_aceite.MitigationTest.test_metodo_sem_fatores) ... ok
+test_mudanca_sem_metodo (test_aceite.MitigationTest.test_mudanca_sem_metodo) ... ok
+test_ajusta_taxa (test_aceite.RampTest.test_ajusta_taxa) ... ok
+test_quebra_detectada (test_aceite.RampTest.test_quebra_detectada) ... ok
+test_serie_curta (test_aceite.RampTest.test_serie_curta) ... ok
+test_campo_ausente (test_aceite.ReceiptTest.test_campo_ausente) ... ok
+test_gramatica_invalida (test_aceite.ReceiptTest.test_gramatica_invalida) ... ok
+test_grossa_antes_da_fina (test_aceite.ReceiptTest.test_grossa_antes_da_fina) ... ok
+test_recibo_intacto (test_aceite.ReceiptTest.test_recibo_intacto) ... ok
+test_shower_detectado_na_cadeia (test_aceite.ReceiptTest.test_shower_detectado_na_cadeia) ... ok
+test_snowball_detectado (test_aceite.ReceiptTest.test_snowball_detectado) ... ok
+test_alinhamento (test_aceite.RefaseTest.test_alinhamento) ... ok
+test_banda_estourada (test_aceite.RefaseTest.test_banda_estourada) ... ok
+test_divergencia_de_tiros (test_aceite.SamplerTest.test_divergencia_de_tiros) ... ok
+test_tiros_declarados (test_aceite.SamplerTest.test_tiros_declarados) ... ok
+test_admite_valido (test_aceite.ShutterTest.test_admite_valido) ... ok
+test_recusa_campo_nao_declarado (test_aceite.ShutterTest.test_recusa_campo_nao_declarado) ... ok
+test_perda_recusa (test_aceite.TranspileTest.test_perda_recusa) ... ok
+test_roundtrip_identico (test_aceite.TranspileTest.test_roundtrip_identico) ... ok
+
+----------------------------------------------------------------------
+Ran 32 tests in 0.002s
+
+OK
