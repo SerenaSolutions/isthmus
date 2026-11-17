@@ -1,0 +1,23 @@
+{
+  "backend": "ibm_fez",
+  "circuitos": {
+    "bell": {
+      "job": "dbu5pfhjbrss73a7ac7g",
+      "shots": 1024,
+      "concordam": 967,
+      "taxa": 0.9443,
+      "veredito": "REFUSED",
+      "recibo_ok": true,
+      "selo": "de3759b6850acac2"
+    },
+    "ghz6": {
+      "job": "dbu5piqe8crs738b41kg",
+      "shots": 1024,
+      "concordam": 868,
+      "taxa": 0.8477,
+      "veredito": "REFUSED",
+      "recibo_ok": true,
+      "selo": "87ea4a2cb664b2e1"
+    }
+  }
+}
