@@ -75,6 +75,29 @@ A cadeia tem verificação própria: um elo re-selado passa sozinho e só
 `verify_chain` o denuncia, que é a diferença entre dano contíguo (*snowball*) e
 dano distribuído (*shower*).
 
+## Vocabulário de verificação, com origem declarada
+
+Os nomes das etapas vêm da engenharia de alinhamento do telescópio espacial James
+Webb, onde alinhar o espelho é medir, corrigir e medir de novo em duas escalas.
+Seis conceitos, sete nomes, cada um preso a uma peça do código:
+
+| termo no JWST | peça no Isthmus | onde |
+|---|---|---|
+| Backplane | contrato de serialização canônica: impede a forma de deformar | `canon.py` |
+| Coarse phasing | fase grossa: esquema, versão de gramática, campos | `receipt.verify` |
+| Fine phasing | fase fina: selo SHA3-256 sobre os bytes canônicos | `receipt.verify` |
+| Dispersed fringe sensing | Fringe: mede a divergência entre duas canonizações | `fringe.py` |
+| CRDS | perfil de canonização versionado, declarado no recibo | `canon.PROFILES` |
+| Trim tab | constante declarada do emissor, absorve não-determinação | `payload.trim` |
+| Snowball e shower | dano contíguo versus dano distribuído na cadeia | `verify` e `verify_chain` |
+
+Duas ressalvas de honestidade, e valem mais que o nome bonito: no JWST o
+*backplane não é berílio*, é compósito de grafite, e quem é berílio são os 18
+segmentos do espelho; e *coarse/fine phasing* medem fase óptica, não bytes. A
+analogia é de método, não de física.
+
+Detalhamento, com teste de aceite para cada termo: `docs/ISTHMUS_1.2_vocabulario_verificacao_2026-11-17.md`.
+
 ## Testado com simulador, não com hardware
 
 A integração já rodada usa Qiskit Aer, simulador local: circuito de Bell, duas
@@ -94,7 +117,7 @@ As três saídas possíveis estão em `docs/ISTHMUS_1.4_implementacao_2026-11-17
 - `docs/ISTHMUS_1.2_vocabulario_verificacao_2026-11-17.md`: vocabulário e testes de aceite
 - `docs/ISTHMUS_1.3_inventario_algoritmos_2026-11-17.md`: inventário e ordem de construção
 - `docs/ISTHMUS_1.4_implementacao_2026-11-17.md`: primeira implementação, com medições
-- `NAMING.md`: nome canônico, abreviação ISTH e a derivada STH
+- `NAMING.md`: nome canônico, abreviações ISTH e STH
 - `docs/ERRATA.md`: correções de nomenclatura, inclusive as que já foram para o histórico
 - `CHANGELOG.md`: versões, mudanças e quebras
 
