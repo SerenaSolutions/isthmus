@@ -4,8 +4,8 @@
 |---|---|---|
 | **Isthmus** | nome de exibição | texto, capa, titulo de secao |
 | `isthmus` | nome canonico | pacote, import, URL do repositorio |
-| **ISTH** | abreviacao oficial de Isthmus | etiqueta, tabela, versao |
-| **STH** | sublinguagem **derivada** | quem so sela, verifica e encadeia |
+| **ISTH** | abreviacao de Isthmus | etiqueta, tabela, versao |
+| **STH** | abreviacao da derivada | quem so sela, verifica e encadeia |
 
 ## ISTH
 

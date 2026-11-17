@@ -1,7 +1,7 @@
 # ISTHMUS
 
 Sub-linguagem híbrida de interoperabilidade, controle e verificação do ecossistema
-ZEPHIRUM/ZYQL. Abreviação oficial: **ISTH**. Derivada: **STH**.
+ZEPHIRUM/ZYQL. Abreviações: **ISTH** e **STH**.
 
 Quatorze algoritmos em três camadas, recibo com duas etapas de verificação, zero
 dependência externa.
