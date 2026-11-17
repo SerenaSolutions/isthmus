@@ -3,8 +3,12 @@
 from .errors import Refusal
 
 
-def characterize(error_rate, coherence_us, backend, measured_at):
-    return {"error_rate": float(error_rate), "coherence_us": float(coherence_us),
+def characterize(error_rate, coherence_us=None, backend="desconhecido", measured_at=None):
+    """Coerencia e opcional: nem todo backend reporta T2. Ausente fica None, nunca zero."""
+    if error_rate is None:
+        raise Refusal("ISTH-BAND-OPTIMISM", "taxa de erro nao declarada")
+    return {"error_rate": float(error_rate),
+            "coherence_us": None if coherence_us is None else float(coherence_us),
             "backend": backend, "measured_at": measured_at}
 
 

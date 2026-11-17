@@ -170,6 +170,16 @@ class CharacterizeTest(unittest.TestCase):
             I.check_band(0.01, prof)
         self.assertEqual(ctx.exception.code, "ISTH-BAND-OPTIMISM")
 
+    def test_coerencia_ausente_nao_quebra(self):
+        prof = I.characterize(0.008, backend="aer_simulator")
+        self.assertIsNone(prof["coherence_us"])
+        self.assertEqual(I.check_band(0.03, prof)["state"], "coerente")
+
+    def test_taxa_de_erro_ausente_recusa(self):
+        with self.assertRaises(Refusal) as ctx:
+            I.characterize(None)
+        self.assertEqual(ctx.exception.code, "ISTH-BAND-OPTIMISM")
+
     def test_banda_coerente(self):
         prof = I.characterize(0.02, 120.0, "sim", "2026-11-17")
         self.assertEqual(I.check_band(0.05, prof)["state"], "coerente")
