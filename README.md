@@ -59,7 +59,8 @@ As três saídas possíveis estão em `docs/ISTHMUS_1.4_implementacao_2026-11-17
 - `docs/ISTHMUS_1.2_vocabulario_verificacao_2026-11-17.md`: vocabulário e testes de aceite
 - `docs/ISTHMUS_1.3_inventario_algoritmos_2026-11-17.md`: inventário e ordem de construção
 - `docs/ISTHMUS_1.4_implementacao_2026-11-17.md`: primeira implementação, com medições
-- `NAMING.md`: nome canônico e as abreviações IST e STH
+- `NAMING.md`: nome canônico, abreviação ISTH e a derivada STH
+- `docs/ERRATA.md`: correções de nomenclatura, inclusive as que já foram para o histórico
 
 ## Licença
 
