@@ -5,7 +5,10 @@ from .errors import Refusal
 
 
 def _dump(payload):
-    return json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
+    try:
+        return json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
+    except (TypeError, ValueError) as e:
+        raise Refusal("ISTH-CANON-TIPO", f"{type(e).__name__}: {e}") from e
 
 
 def canon_v1(payload):

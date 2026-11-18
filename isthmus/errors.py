@@ -19,6 +19,9 @@ CODES = {
     "ISTH-COARSE-CAMPO": "fase grossa: campo obrigatorio ausente",
     "ISTH-FINE-SEAL": "fase fina: selo nao confere",
     "ISTH-CHAIN-SHOWER": "cadeia rompida: dano distribuido",
+    "ISTH-CANON-TIPO": "payload nao serializavel em JSON canonico",
+    "ISTH-SAMPLER-FAIL": "backend falhou durante a amostragem",
+    "ISTH-SAMPLER-FORMATO": "contagens fora do formato esperado",
     "ISTH-STH-NOT-ALLOWED": "STH nao decide: derivada so sela, verifica e encadeia",
 }
 
