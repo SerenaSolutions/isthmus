@@ -19,6 +19,12 @@ CODES = {
     "ISTH-COARSE-CAMPO": "fase grossa: campo obrigatorio ausente",
     "ISTH-FINE-SEAL": "fase fina: selo nao confere",
     "ISTH-CHAIN-SHOWER": "cadeia rompida: dano distribuido",
+    "ISTH-BRIDGE-AUSENTE": "ponte: bloco de origem ausente",
+    "ISTH-BRIDGE-MAPA": "ponte: versao de mapa desconhecida",
+    "ISTH-BRIDGE-SELO": "ponte: selo de origem nao recomputa",
+    "ISTH-BRIDGE-ORIGEM": "ponte: formato de origem desconhecido",
+    "ISTH-BRIDGE-FORMA": "ponte: recibo de origem fora de forma",
+    "ISTH-BRIDGE-CAMPO": "ponte: campo mapeavel ausente",
     "ISTH-STH-NOT-ALLOWED": "STH nao decide: derivada so sela, verifica e encadeia",
 }
 
