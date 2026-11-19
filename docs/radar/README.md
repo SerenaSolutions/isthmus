@@ -1,0 +1,10 @@
+# Radar
+
+Material externo que a equipe leu e decidiu guardar, com a fonte e o que se pode
+provar de cada um. Regra: o que não foi conferido entra marcado como não
+verificado. Radar não é backlog: nada aqui vira tarefa sem decisão.
+
+| data | tema | veredito |
+|---|---|---|
+| 2026-11-19 | Acoplamento forte em fibra óptica (Nature Physics) | acompanhar, sem impacto imediato no código |
+| 2026-11-19 | GitLab vs GitHub | fonte é propaganda da GitLab; só as linhas verificáveis valem |

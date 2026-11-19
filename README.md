@@ -148,6 +148,7 @@ As três saídas possíveis estão em `docs/ISTHMUS_1.4_implementacao_2026-11-17
 - `NAMING.md`: nome canônico, abreviações ISTH e STH
 - `docs/ERRATA.md`: correções de nomenclatura, inclusive as que já foram para o histórico
 - `CHANGELOG.md`: versões, mudanças e quebras
+- `docs/radar/`: material externo lido pela equipe, com fonte e o que não foi verificado
 
 ## Licença
 
