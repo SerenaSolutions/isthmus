@@ -96,6 +96,20 @@ Recusa chega ao agente como `isError` com código `ISTH-*`, nunca como traceback
 manifesto de registro está em `server.json`, e nove testes falam o protocolo por
 subprocesso em `tests/test_mcp.py`.
 
+### Rodar o `quanso_status` fora desta máquina
+
+O provedor QuanSo depende do pacote `quanso` mais o repositório clonado. Para não
+depender da máquina de quem chama, existe `Dockerfile.quanso`:
+
+```bash
+docker build -f Dockerfile.quanso --build-arg GITHUB_TOKEN=... -t isthmus-quanso .
+docker run -i isthmus-quanso        # fala MCP por stdio
+```
+
+O token entra como build-arg, porque o repositório do QuanSo é privado. A imagem
+*não foi construída*: `docker` não está instalado neste ambiente. Ela está escrita
+e não verificada, e assim fica declarado.
+
 ## Vocabulário de verificação, adaptado à linguagem
 
 Os nomes das fases vêm da engenharia de alinhamento do telescópio espacial James

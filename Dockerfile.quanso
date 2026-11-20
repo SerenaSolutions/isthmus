@@ -1,0 +1,21 @@
+# Imagem para o provedor quanso_status do isthmus-mcp.
+# Fecha a dependencia do provedor: pacote quanso + repositorio clonado.
+FROM python:3.11-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    QUANSO_OS_DIR=/opt/quanso-os
+
+RUN apt-get update && apt-get install -y --no-install-recommends git && apt-get clean
+
+# O repositorio do QuanSo e privado: o token entra por build-arg e NAO fica na imagem.
+ARG GITHUB_TOKEN
+RUN git clone --depth 1 "https://x-access-token:${GITHUB_TOKEN}@github.com/SerenaSolutions/quanso-os.git" "$QUANSO_OS_DIR"
+
+WORKDIR /opt
+COPY . /opt/isthmus
+RUN pip install --no-cache-dir /opt/isthmus && pip install --no-cache-dir -e "$QUANSO_OS_DIR"
+
+# O provedor roda o QuanSo de dentro do proprio diretorio.
+WORKDIR /opt/quanso-os
+ENTRYPOINT ["isthmus-mcp"]
