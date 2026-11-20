@@ -34,6 +34,7 @@ isthmus = "isthmus.cli:main"
 isth = "isthmus.cli:main"
 ist = "isthmus.cli:main"
 sth = "isthmus.sth_cli:main"
+isthmus-mcp = "isthmus_mcp.server:main"
 
 [tool.setuptools]
-packages = ["isthmus"]
+packages = ["isthmus", "isthmus_mcp"]

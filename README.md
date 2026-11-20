@@ -75,6 +75,27 @@ A cadeia tem verificação própria: um elo re-selado passa sozinho e só
 `verify_chain` o denuncia, que é a diferença entre dano contíguo (*snowball*) e
 dano distribuído (*shower*).
 
+## Servidor MCP, para qualquer agente
+
+O Isthmus fala o Model Context Protocol em stdlib pura, sem dependência. Um agente
+qualquer, inclusive de outra empresa, chama o verificador como ferramenta:
+
+```bash
+isthmus-mcp          # transporte stdio, JSON-RPC 2.0
+```
+
+| ferramenta | faz |
+|---|---|
+| `isthmus_decide` | decide com banda declarada e devolve recibo selado |
+| `isthmus_seal` | sela payload já decidido, exige o campo `verdict` |
+| `isthmus_verify` | verifica recibo, fase grossa e fase fina |
+| `isthmus_verify_chain` | verifica cadeia e distingue dano contíguo de distribuído |
+| `isthmus_nomenclature` | devolve fases, contratos e códigos de recusa |
+
+Recusa chega ao agente como `isError` com código `ISTH-*`, nunca como traceback. O
+manifesto de registro está em `server.json`, e nove testes falam o protocolo por
+subprocesso em `tests/test_mcp.py`.
+
 ## Vocabulário de verificação, adaptado à linguagem
 
 Os nomes das fases vêm da engenharia de alinhamento do telescópio espacial James
