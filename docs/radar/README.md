@@ -8,3 +8,4 @@ verificado. Radar não é backlog: nada aqui vira tarefa sem decisão.
 |---|---|---|
 | 2026-11-19 | Acoplamento forte em fibra óptica (Nature Physics) | acompanhar, sem impacto imediato no código |
 | 2026-11-19 | GitLab vs GitHub | fonte é propaganda da GitLab; só as linhas verificáveis valem |
+| 2026-11-20 | GitDiagram e GitReverse | ferramentas reais e MIT; servem para divulgação, não para auditoria |
