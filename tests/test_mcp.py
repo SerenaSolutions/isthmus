@@ -98,3 +98,37 @@ class MCPProtocoloTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ExternoTest(unittest.TestCase):
+    """Projeto externo vira ferramenta por CLI, sem tocar no servidor."""
+
+    def test_provider_desativado_nao_aparece(self):
+        from isthmus_mcp import externo
+        provs = [{"project": "X", "tool": "x", "enabled": False, "command": ["x"]}]
+        self.assertEqual(externo.especificacoes(provs), [])
+        self.assertEqual(externo.despachos(provs), {})
+
+    def test_provider_habilitado_roda_comando(self):
+        from isthmus_mcp import externo
+        provs = [{"project": "Eco", "tool": "eco", "enabled": True,
+                  "command": [sys.executable, "-c", "print('ok-do-projeto')"]}]
+        specs = externo.especificacoes(provs)
+        self.assertEqual(specs[0]["name"], "eco")
+        r = externo.despachos(provs)["eco"]({})
+        self.assertEqual(r["saida"], "ok-do-projeto")
+
+    def test_comando_ausente_vira_codigo(self):
+        from isthmus_mcp import externo
+        provs = [{"project": "Fantasma", "tool": "fantasma", "enabled": True,
+                  "command": ["binario-que-nao-existe-xyz"]}]
+        with self.assertRaises(externo.FalhaExterna) as ctx:
+            externo.despachos(provs)["fantasma"]({})
+        self.assertEqual(ctx.exception.codigo, "ISTH-MCP-EXT-AUSENTE")
+
+    def test_quanso_esta_declarado_e_desativado(self):
+        from isthmus_mcp import externo
+        provs = externo.carregar()
+        alvo = [p for p in provs if p.get("project") == "QuanSo"]
+        self.assertEqual(len(alvo), 1, "QuanSo precisa estar declarado no config")
+        self.assertFalse(alvo[0]["enabled"], "QuanSo nao pode ficar ativo sem fonte confirmada")

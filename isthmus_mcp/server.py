@@ -17,6 +17,8 @@ import sys
 import isthmus as I
 from isthmus.errors import Refusal
 
+from . import externo
+
 PROTOCOLO = "2025-06-18"
 NOME = "isthmus"
 VERSAO = I.__version__
@@ -114,6 +116,11 @@ DESPACHO = {"isthmus_decide": _decide, "isthmus_seal": _seal,
             "isthmus_verify": _verify, "isthmus_verify_chain": _chain,
             "isthmus_nomenclature": _nomenclatura}
 
+# projetos externos declarados em mcp_providers.json entram como ferramentas
+_PROVIDERS = externo.carregar()
+FERRAMENTAS = FERRAMENTAS + externo.especificacoes(_PROVIDERS)
+DESPACHO = {**DESPACHO, **externo.despachos(_PROVIDERS)}
+
 
 def tratar(msg):
     """Trata uma mensagem JSON-RPC. Devolve a resposta ou None para notificação."""
@@ -142,6 +149,9 @@ def tratar(msg):
                     "error": {"code": -32602, "message": f"ferramenta desconhecida: {nome}"}}
         try:
             return {"jsonrpc": "2.0", "id": mid, "result": _texto(fn(args))}
+        except externo.FalhaExterna as e:
+            return {"jsonrpc": "2.0", "id": mid,
+                    "result": _texto({"state": "refused", "code": e.codigo, "detail": e.detalhe}, erro=True)}
         except Refusal as e:
             return {"jsonrpc": "2.0", "id": mid,
                     "result": _texto({"state": "refused", "code": e.code, "detail": e.detail}, erro=True)}

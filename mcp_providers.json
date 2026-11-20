@@ -1,0 +1,12 @@
+{
+  "providers": [
+    {
+      "project": "QuanSo",
+      "tool": "quanso",
+      "description": "Projeto QuanSo. Desativado: nenhum repositorio, pacote ou URL identificado ate 20/11/2026 (zero em busca de codigo na organizacao, 404 no PyPI). Preencher 'command' quando a fonte for confirmada.",
+      "enabled": false,
+      "command": [],
+      "inputSchema": {"type": "object", "properties": {}}
+    }
+  ]
+}
