@@ -30,8 +30,9 @@ Leia esta página antes de propor código.
 
 ## Governança
 
-Este repositório opera sob o documento oficial de governança do agente arquiteto:
-https://github.com/SerenaSolutions/zephirum-lang/blob/main/docs/GOVERNANCA-AGENTE-ARQUITETO.md
+A diretriz de governança do agente arquiteto é privativa da Serena Solutions e não é publicada
+neste repositório. Ela vive no repositório privado `quanso-os`, em `docs/GOVERNANCA-AGENTE-ARQUITETO.md`.
 
-Ele define os sete níveis de evidência, o protocolo de atuação, as proibições e os critérios de
-prioridade. Em caso de conflito com texto mais permissivo, vale o documento de governança.
+Resumo operacional público, sem detalhe estratégico: evidência antes de afirmação; nada é
+concluído sem teste executado; toda falha termina em correção, evidência ou limitação declarada;
+não inventar arquivo, commit, teste, resultado ou funcionalidade.
