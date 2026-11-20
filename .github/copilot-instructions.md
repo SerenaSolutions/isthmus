@@ -27,3 +27,11 @@ Leia esta página antes de propor código.
 1. Diga o que foi medido, com o comando.
 2. Diga o que continua não demonstrado.
 3. Se tocar em selo, assinatura ou veredito, traga teste que reproduz o defeito antes da correção.
+
+## Governança
+
+Este repositório opera sob o documento oficial de governança do agente arquiteto:
+https://github.com/SerenaSolutions/zephirum-lang/blob/main/docs/GOVERNANCA-AGENTE-ARQUITETO.md
+
+Ele define os sete níveis de evidência, o protocolo de atuação, as proibições e os critérios de
+prioridade. Em caso de conflito com texto mais permissivo, vale o documento de governança.
