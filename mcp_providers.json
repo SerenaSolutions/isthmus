@@ -2,11 +2,21 @@
   "providers": [
     {
       "project": "QuanSo",
-      "tool": "quanso",
-      "description": "Projeto QuanSo. Desativado: nenhum repositorio, pacote ou URL identificado ate 20/11/2026 (zero em busca de codigo na organizacao, 404 no PyPI). Preencher 'command' quando a fonte for confirmada.",
-      "enabled": false,
-      "command": [],
-      "inputSchema": {"type": "object", "properties": {}}
+      "tool": "quanso_status",
+      "description": "Sobe o QUANSO OS em perfil classico e devolve o estado real: veredito, subsistemas no ar por camada e se a camada quantica carregou. Fonte: github.com/SerenaSolutions/quanso-os, pacote quanso 0.4.0.",
+      "enabled": true,
+      "command": [
+        "python3",
+        "-m",
+        "boot"
+      ],
+      "fixed_args": [
+        "classico"
+      ],
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
     }
   ]
 }

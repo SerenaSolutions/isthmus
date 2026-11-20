@@ -49,10 +49,13 @@ def executar(provider, argumentos):
     comando = list(provider.get("command") or [])
     if not comando:
         raise FalhaExterna("ISTH-MCP-EXT", "provedor sem comando")
+    # argumentos posicionais fixos do provedor (ex.: modo do QuanSo)
+    comando.extend(str(a) for a in (provider.get("fixed_args") or []))
     for chave, valor in (argumentos or {}).items():
         comando.extend([f"--{chave.replace('_', '-')}", str(valor)])
     try:
-        r = subprocess.run(comando, capture_output=True, text=True, timeout=LIMITE_S)
+        r = subprocess.run(comando, capture_output=True, text=True, timeout=LIMITE_S,
+                           cwd=provider.get("cwd") or None)
     except FileNotFoundError:
         raise FalhaExterna("ISTH-MCP-EXT-AUSENTE", comando[0])
     except subprocess.TimeoutExpired:

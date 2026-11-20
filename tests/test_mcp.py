@@ -43,8 +43,9 @@ class MCPProtocoloTest(unittest.TestCase):
     def test_lista_cinco_ferramentas_com_esquema(self):
         r = self._rpc({"jsonrpc": "2.0", "id": 3, "method": "tools/list"})
         nomes = [t["name"] for t in r["result"]["tools"]]
-        self.assertEqual(nomes, ["isthmus_decide", "isthmus_seal", "isthmus_verify",
-                                 "isthmus_verify_chain", "isthmus_nomenclature"])
+        self.assertEqual(nomes[:5], ["isthmus_decide", "isthmus_seal", "isthmus_verify",
+                                     "isthmus_verify_chain", "isthmus_nomenclature"])
+        self.assertIn("quanso_status", nomes)
         for t in r["result"]["tools"]:
             self.assertEqual(t["inputSchema"]["type"], "object")
             self.assertTrue(t["description"])
@@ -126,9 +127,35 @@ class ExternoTest(unittest.TestCase):
             externo.despachos(provs)["fantasma"]({})
         self.assertEqual(ctx.exception.codigo, "ISTH-MCP-EXT-AUSENTE")
 
-    def test_quanso_esta_declarado_e_desativado(self):
+    def test_quanso_declarado_uma_vez_so(self):
         from isthmus_mcp import externo
         provs = externo.carregar()
         alvo = [p for p in provs if p.get("project") == "QuanSo"]
-        self.assertEqual(len(alvo), 1, "QuanSo precisa estar declarado no config")
-        self.assertFalse(alvo[0]["enabled"], "QuanSo nao pode ficar ativo sem fonte confirmada")
+        self.assertEqual(len(alvo), 1, "QuanSo precisa estar declarado exatamente uma vez")
+
+
+class QuanSoProviderTest(unittest.TestCase):
+    """QuanSo integrado como ferramenta MCP declarada."""
+
+    def test_quanso_ativo_com_comando_correto(self):
+        from isthmus_mcp import externo
+        alvo = [p for p in externo.carregar() if p.get("project") == "QuanSo"]
+        self.assertEqual(len(alvo), 1)
+        self.assertTrue(alvo[0]["enabled"], "QuanSo precisa estar ativo")
+        self.assertEqual(alvo[0]["command"], ["python3", "-m", "boot"])
+        self.assertEqual(alvo[0]["fixed_args"], ["classico"])
+
+    def test_quanso_vira_ferramenta_listada(self):
+        from isthmus_mcp import externo
+        specs = externo.especificacoes(externo.carregar())
+        nomes = [s["name"] for s in specs]
+        self.assertIn("quanso_status", nomes)
+
+    def test_argumentos_posicionais_entram_antes_das_flags(self):
+        from isthmus_mcp import externo
+        prov = {"project": "P", "tool": "p", "enabled": True,
+                "command": [sys.executable, "-c",
+                            "import sys; print('|'.join(sys.argv[1:]))"],
+                "fixed_args": ["classico"]}
+        r = externo.executar(prov, {"modo": "sim"})
+        self.assertEqual(r["saida"], "classico|--modo|sim")
