@@ -8,6 +8,9 @@ summary: Papéis, portões obrigatórios e decisões de ferramenta que valem par
 Vale para `isthmus`, `zephirum-lang` e `quanso-os`. Regra geral: nenhum item entra
 por opinião. Entra com medida, com fonte ou não entra.
 
+O que pertence ou não ao ecossistema está definido em [ESCOPO](ESCOPO.md). Este
+documento não redefine escopo: aplica a regra a quem está dentro.
+
 O que pertence ou não ao ecossistema está definido em [ESCOPO](ESCOPO.md), e este
 documento não redefine escopo: aplica a regra a quem está dentro.
 
