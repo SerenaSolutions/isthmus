@@ -2,7 +2,8 @@
 
 Material externo que a equipe leu e decidiu guardar, com a fonte e o que se pode
 provar de cada um. Regra: o que não foi conferido entra marcado como não
-verificado. Radar não é backlog: nada aqui vira tarefa sem decisão.
+verificado. Radar não é backlog: nada aqui vira tarefa sem decisão. O que está
+dentro ou fora do ecossistema é definido em [ESCOPO](../ESCOPO.md).
 
 | data | tema | veredito |
 |---|---|---|
