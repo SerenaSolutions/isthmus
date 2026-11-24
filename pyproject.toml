@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "isthmus"
-version = "1.0.0"
+version = "0.1.1"
 description = "Sub-linguagem híbrida de interoperabilidade, controle e verificação do ecossistema ZEPHIRUM"
 readme = "README.md"
 requires-python = ">=3.10"
